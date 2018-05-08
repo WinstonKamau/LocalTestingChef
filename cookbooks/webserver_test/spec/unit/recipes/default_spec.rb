@@ -18,6 +18,7 @@ describe 'webserver_test::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
   end
 
   context 'When all attributes are default, on CentOS 7.4.1708' do
@@ -30,6 +31,18 @@ describe 'webserver_test::default' do
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
+    end
+
+    it 'installs httpd' do
+      expect(chef_run).to install_package 'httpd'
+    end
+
+    it 'enables the httpd service' do
+      expect(chef_run).to enable_service 'httpd'
+    end
+
+    it 'starts the httpd service' do
+      expect(chef_run).to start_service 'httpd'
     end
   end
 end
