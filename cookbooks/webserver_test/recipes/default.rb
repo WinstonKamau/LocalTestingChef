@@ -1,8 +1,15 @@
-# Install the Apache package
-package 'httpd'
+package_name =
+  service_name =
+    case node['platform']
+    when 'centos' then 'httpd'
+    when 'ubuntu' then 'apache2'
+    end
+
+# Install the approrriate package
+package package_name
 
 # Start and enable the httpd service
-service 'httpd' do
+service service_name do
     action [:enable, :start]
 end
 
