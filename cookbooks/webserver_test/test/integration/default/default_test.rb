@@ -7,6 +7,7 @@ describe service('httpd') do
   it { should be_running }
 end
 
+# The word to match in this test has to have the same size of the letters
 describe command('curl localhost') do
   its('stdout') { should match /hello/ }
 end
