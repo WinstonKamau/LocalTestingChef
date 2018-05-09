@@ -10,15 +10,14 @@ package package_name
 
 # Start and enable the httpd service
 service service_name do
-    action [:enable, :start]
+  action [:enable, :start]
 end
 
 # Serve a custom home page
 file '/var/www/html/index.html' do
-    content '<html>
+  content '<html>
     <body>
       <h1> hello world</h1>
     </body>
 </html>'
 end
-
